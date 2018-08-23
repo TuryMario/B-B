@@ -5,8 +5,8 @@ app.listen(server, () => {
     console.log(`Our app is running on port ${ server }`);
 });
 //server 		= app.listen(3300),
-var io 			= require('socket.io')(server),
-path 		= require('path'),
+//var io 			= require('socket.io')(server),
+var path 		= require('path'),
 bodyParser 	= require('body-parser'),
 publicPath 	= '/../public/',
 liveCart
@@ -25,28 +25,28 @@ app.get('/', function (req, res) {
 app.use('/api', require('./api'))
 
 // Websocket logic for Live Cart
-io.on('connection', function (socket) {
+// io.on('connection', function (socket) {
 
-	socket.on('cart-transaction-complete', function () {
-		socket.broadcast.emit('update-live-cart-display', {})
-	})
+// 	socket.on('cart-transaction-complete', function () {
+// 		socket.broadcast.emit('update-live-cart-display', {})
+// 	})
 
-	// upon page load, give user current cart
-	socket.on('live-cart-page-loaded', function () {
-		socket.emit('update-live-cart-display', liveCart)
-	})
+// 	// upon page load, give user current cart
+// 	socket.on('live-cart-page-loaded', function () {
+// 		socket.emit('update-live-cart-display', liveCart)
+// 	})
 
-	// upon connecting, make client update live cart
-	socket.emit('update-live-cart-display', liveCart)
+// 	// upon connecting, make client update live cart
+// 	socket.emit('update-live-cart-display', liveCart)
 
-	// when the cart data is updated by the POS
-	socket.on('update-live-cart', function (cartData) {
+// 	// when the cart data is updated by the POS
+// 	socket.on('update-live-cart', function (cartData) {
 		
-		// keep track of it
-		liveCart = cartData
+// 		// keep track of it
+// 		liveCart = cartData
 		
-		// broadcast updated live cart to all websocket clients
-		socket.broadcast.emit('update-live-cart-display', liveCart)
-	})
+// 		// broadcast updated live cart to all websocket clients
+// 		socket.broadcast.emit('update-live-cart-display', liveCart)
+// 	})
 
-})
+// })
