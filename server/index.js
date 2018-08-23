@@ -1,19 +1,19 @@
-var express = require('express'),
-app 		= require('express')(),
+var express = require('express');
+var app 		= require('express')();
+const server = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Our app is running on port ${ PORT }`);
+});
 //server 		= app.listen(3300),
-io 			= require('socket.io')(server),
+var io 			= require('socket.io')(server),
 path 		= require('path'),
 bodyParser 	= require('body-parser'),
 publicPath 	= '/../public/',
 liveCart
 
-const server = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Our app is running on port ${ PORT }`);
-});
 
-console.log('B-B')
-console.log('Server got started')
+console.log('B-B');
+console.log('Server got started');
 
 app.use(express.static(path.resolve(__dirname + publicPath)))
 app.use(express.static(path.resolve(__dirname + '/../bower_components')))
