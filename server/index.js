@@ -7,7 +7,12 @@ bodyParser 	= require('body-parser'),
 publicPath 	= '/../public/',
 liveCart
 
-console.log('Hunts Point POS')
+// const server = process.env.PORT || 3000;
+// app.listen(PORT, () => {
+//     console.log(`Our app is running on port ${ PORT }`);
+// });
+
+console.log('B-B')
 console.log('Server started')
 
 app.use(express.static(path.resolve(__dirname + publicPath)))
